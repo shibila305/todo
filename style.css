@@ -1,0 +1,154 @@
+
+body, button, html {
+    margin: 0;
+    padding: 0;
+}
+button {
+    font-family: inherit;
+    font-size: 100%;
+    font-weight: inherit;
+    border: none;
+    background: none;
+    
+}
+
+body {
+    background: #e5e1e1;
+    color: #111;
+    font-weight: 300;
+    line-height: 1.4em;
+    margin: 0 auto;
+    max-width: 550px;
+    min-width: 230px;
+}
+
+.todoapp {
+    background: #fff;
+    margin: 130px 0 40px;
+    position: relative;
+}
+
+.todoapp h1 {
+    color: #b83f45;
+    font-size: 85px;
+    font-weight: 100;
+    position: absolute;
+    text-align: center;
+    top: -140px;
+    width: 100%;
+}
+
+.new-task {
+    border: 1px solid #999;
+    box-sizing: border-box;
+    font-size: 22px;
+    font-style: italic;
+    margin: 0;
+    padding: 6px;
+    position: relative;
+    width: 100%;
+   
+    padding: 15px 15px 15px 50px;
+}
+
+.main {
+    border-top: 1px solid #e6e6e6;
+    position: relative;
+}
+
+.todo-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+
+.clear{
+    
+    float:right;
+    line-height:19px;
+    position:relative;
+    text-decoration:none
+}
+.clear:hover{
+    text-decoration:underline
+}
+
+.todo-list li {
+    border-bottom:1px solid #e6e6e6;
+    font-size: 24px;
+    position: relative;
+    list-style: none;
+    padding: 15px 15px 15px 40px;
+    margin: 10px;
+}
+
+.todo-list li .toggle {
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 10px;
+    width: 20px; 
+}
+
+
+.todo-list li .destroy {
+    bottom: 0;
+    height: 40px;
+    margin: auto 0;
+    position: absolute;
+    right: 10px;
+    width: 40px;
+}
+
+.footer {
+    height: 20px;
+    padding: 15px 15px;
+    text-align: center;
+}
+
+
+.foot {
+    left: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+}
+
+.foot li {
+    display: inline;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    margin: 3px;
+    padding: 3px 7px;
+    text-decoration: none;
+    border-color: black;
+}
+/* 
+.toggle+label{
+     text-decoration: line-through;
+} */
+
+
+
+.info {
+    color: #4d4d4d;
+    font-size: 11px;
+    margin: 65px auto 0;
+    text-align: center;
+}
+
+
+button:hover{
+   
+    transform: scale(1.1);
+}
+
+.task-count{
+    float:left;
+    text-align:left
+}
