@@ -1,16 +1,26 @@
+*{
+    font-size: 15px;
+    /* line-height: 2px; */
+    letter-spacing: 0.6px;
+    font-family:sans-serif;
+}
 
 body, button, html {
     margin: 0;
     padding: 0;
 }
 button {
-    font-family: inherit;
-    font-size: 100%;
-    font-weight: inherit;
+    cursor: pointer;
     border: none;
     background: none;
+    padding: 5px;
+    border-radius: 3px;
     
 }
+.foot li button.selected {
+    border: 1px solid #ce4646;
+}
+
 
 body {
     background: #e5e1e1;
@@ -51,6 +61,10 @@ body {
     padding: 15px 15px 15px 50px;
 }
 
+.new-task:active{
+    border: 1px solid blue;
+}
+
 .main {
     border-top: 1px solid #e6e6e6;
     position: relative;
@@ -63,6 +77,14 @@ body {
     text-align: left;
 }
 
+/* 
+.toggle+label{
+    border-radius: 100%;
+} */
+
+input[type="checkbox"]{
+    cursor: pointer;
+}
 
 .clear{
     
@@ -84,6 +106,14 @@ body {
     margin: 10px;
 }
 
+/* .todo-list li:active{
+    border: 1px solid red;
+} */
+
+.todo-list li .destroy:focus,.todo-list li .destroy:hover{
+    color:#c18585
+}
+
 .todo-list li .toggle {
     bottom: 0;
     position: absolute;
@@ -91,7 +121,9 @@ body {
     top: 0;
     left: 10px;
     width: 20px; 
-}
+  
+    
+} 
 
 
 .todo-list li .destroy {
@@ -101,7 +133,11 @@ body {
     position: absolute;
     right: 10px;
     width: 40px;
+
 }
+
+
+
 
 .footer {
     height: 20px;
@@ -109,6 +145,14 @@ body {
     text-align: center;
 }
 
+
+.mark{
+  position: absolute;
+  z-index: 2;
+  left: 20px;
+  top: 13px;
+
+}
 
 .foot {
     left: 0;
@@ -126,8 +170,27 @@ body {
     margin: 3px;
     padding: 3px 7px;
     text-decoration: none;
-    border-color: black;
+    
 }
+
+.foot li button:hover{
+    border:1px solid #db7676;
+}
+.foot li button.selected{
+    border:1px solid #ce4646;
+}
+
+/* 
+.completed-task+label {
+    text-decoration: line-through;
+    color: #888; 
+} */
+
+
+.strike{
+    text-decoration: line-through;
+}
+
 /* 
 .toggle+label{
      text-decoration: line-through;
@@ -137,18 +200,16 @@ body {
 
 .info {
     color: #4d4d4d;
-    font-size: 11px;
+    font-size: 10px;
     margin: 65px auto 0;
     text-align: center;
 }
 
 
-button:hover{
-   
-    transform: scale(1.1);
-}
 
 .task-count{
     float:left;
     text-align:left
 }
+
+
