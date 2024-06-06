@@ -1,7 +1,8 @@
 const inputtext = document.querySelector(".new-task");
 const list = document.querySelector(".todo-list");
 let tasks = [];
-
+let allMarked=false;
+// let activebutton='all';s
 
 inputtext.addEventListener('keydown', (e) => {
     if (e.key === "Enter") {
@@ -16,13 +17,23 @@ inputtext.addEventListener('keydown', (e) => {
 });
 
 
+
+
+
+
+
+
+
 //clear complete
 
 const btn = document.querySelector('.clear');
 btn.addEventListener('click', () => {
     // Filter out the completed tasks, keeping only the active tasks
-   const activetasks = tasks.filter(task => task.status === 'Active');
-    renderTasks(activetasks); 
+    tasks = tasks.filter(task => task.status === 'Active');
+ 
+
+    renderTasks(tasks); 
+
     updateTaskCount()
     
 });
@@ -43,6 +54,7 @@ function getTask(category){
 
     if (category === 'All') {
         filteredTasks = tasks;
+
     } 
     else {
         filteredTasks = tasks.filter(item => item.status === category);
@@ -59,27 +71,40 @@ function renderTasks(taskList) {
     taskListElement.innerHTML = '';
     
     taskList.forEach(task => {
+        
+        
         const taskItem = document.createElement('li');
+
+
+        const iscompleted=task.status==='Completed';
+
         
         taskItem.innerHTML = `
             <input class="toggle" type="checkbox" ${task.status === 'Completed' ? 'checked' : ''}>
-            <label>${task.name}</label>
+            <label for="checkbox" class=${iscompleted?'strike': ''}>${task.name}</label>
             <button class="destroy">\u00d7</button>
         `;
         taskListElement.appendChild(taskItem);
 
         taskItem.querySelector('.destroy').addEventListener('click', () => deleteTask(task));
         taskItem.querySelector('.toggle').addEventListener('click', () => toggleTask(task));
+        
         updateTaskCount()
     });
     console.log(taskList);
 }
 
-//category filtering
 
-const categorybutton = document.querySelectorAll('.foot li');
-categorybutton.forEach(button => {
+//category filtering
+const categoryButtons = document.querySelectorAll('.foot li button');
+categoryButtons.forEach(button => {
     button.addEventListener('click', (e) => {
+        // Remove the selected class from all buttons
+        categoryButtons.forEach(btn => btn.classList.remove('selected'));
+        
+        // Add the selected class to the clicked button
+        e.target.classList.add('selected');
+
         const category = e.target.parentElement.dataset.category;
         console.log({ e, category });
         getTask(category);
@@ -87,11 +112,15 @@ categorybutton.forEach(button => {
 });
 
 
+
+
 //status changing of tasks
 
 function toggleTask(task) {
     task.status = task.status === 'Active' ? 'Completed' : 'Active';
     console.log(task);
+    updateTaskCount();
+    renderTasks(tasks);
 }
 
 
@@ -110,7 +139,17 @@ function deleteTask(taskToRemove){
 
 
 function updateTaskCount() {
-    const totalCount = tasks.length;
-    // const activeCount = tasks.filter(task => task.status === 'Active').length;
-    document.querySelector('.task-count').textContent = `${totalCount} items left`;
+    // const totalCount = tasks.length;
+    const activeCount = tasks.filter(task => task.status === 'Active').length;
+    document.querySelector('.task-count').textContent = `${activeCount} items left`;
+    
 }
+
+
+const markAll = document.querySelector('.mark');
+markAll.addEventListener('click', () => {
+    allMarked = !allMarked;
+    tasks.forEach(task => task.status = allMarked ? 'Completed' : 'Active');
+    renderTasks(tasks);
+    updateTaskCount();
+});
